@@ -25,7 +25,7 @@ export default function MainContent({ sidebarExpanded }: MainContentProps) {
   }
 
   return (
-    <div className={cn("flex-1 transition-all duration-300 ease-in-out", sidebarExpanded ? "ml-0 mb-4 mt-4 mr-8" : "ml-0 mb-4 mt-4 mr-8")}>
+    <div className={cn("flex-1 transition-all duration-300 ease-in-out", sidebarExpanded ? "ml-0 mb-4 mt-4 mr-4" : "ml-0 mb-4 mt-4 mr-4")}>
       <div className="h-full bg-[#2B2B2B] rounded-2xl p-6 relative overflow-auto">
         {/* Subtle dot pattern background */}
         <div
