@@ -50,7 +50,21 @@ export default function MainContent({ sidebarExpanded }: MainContentProps) {
             <span>Add Files to</span>
             <div className="ml-3 flex items-center">
               <div className="w-14 h-14 bg-[#1a1a1a] rounded-lg flex items-center justify-center mr-2 -rotate-6 border border-gray-700">
-                <TiWeatherCloudy className="w-10 h-10 text-blue-700" />
+                <div className="relative">
+                  <TiWeatherCloudy className="w-10 h-10" style={{ color: 'transparent' }} />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <svg width="40" height="40" viewBox="0 0 24 24">
+                      <defs>
+                        <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#0047AB" />
+                          <stop offset="60%" stopColor="#4682B4" />
+                          <stop offset="100%" stopColor="#B0E2FF" />
+                        </linearGradient>
+                      </defs>
+                      <path d="M17 19h-11c-2.206 0-4-1.794-4-4 0-1.861 1.277-3.429 3.001-3.874l-.001-.126c0-3.309 2.691-6 6-6 2.587 0 4.824 1.638 5.65 4.015 2.942-.246 5.35 2.113 5.35 4.985 0 2.757-2.243 5-5 5zm-11.095-6.006c-1.008.006-1.905.903-1.905 2.006s.897 2 2 2h11c1.654 0 3-1.346 3-3s-1.346-3-3-3c-.243 0-.5.041-.81.13l-1.075.307-.186-1.103c-.325-1.932-1.977-3.334-3.929-3.334-2.206 0-4 1.794-4 4 0 .272.027.545.082.811l.244 1.199-1.421-.016z" fill="url(#cloudGradient)" />
+                    </svg>
+                  </div>
+                </div>
               </div>
               <span className="text-white">Cloud Chat</span>
             </div>
