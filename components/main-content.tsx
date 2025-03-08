@@ -36,11 +36,11 @@ export default function MainContent({ sidebarExpanded }: MainContentProps) {
         />
 
         {/* Web version notice */}
-        <div className="flex items-center justify-center mb-8 bg-[#242424] py-2 px-4 rounded-2xl">
+        <div className="flex items-center justify-center mb-8 bg-[#242424] py-2 px-4 rounded-full w-fit mx-auto">
           <AlertCircle className="text-yellow-500 mr-2" size={18} />
           <p className="text-sm">
             The web version does not display local chats. To access all features, please{" "}
-            <span className="text-yellow-500 hover:underline cursor-pointer">install the app</span>.
+            <span className="text-yellow-500 hover:underline cursor-pointer">install the app.</span>
           </p>
         </div>
 
@@ -96,14 +96,16 @@ export default function MainContent({ sidebarExpanded }: MainContentProps) {
                   className="w-5 h-5"
                 />
               </div>
-              <input
-                type="text"
-                placeholder="https://example.com/file.pdf"
-                className="flex-1 bg-[#2B2B2B] border border-[#3a3a3a] rounded-full px-3 py-2 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-              />
-              <button className="ml-2 bg-[#3a3a3a] hover:bg-[#444444] text-white px-4 py-2 rounded-full text-sm transition-colors">
-                Add
-              </button>
+              <div className="flex-1 relative">
+                <input
+                  type="text"
+                  placeholder="https://example.com/file.pdf"
+                  className="w-full bg-[#2B2B2B] border border-[#3a3a3a] rounded-full px-3 py-2 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 pr-20"
+                />
+                <button className="absolute right-0 top-0 bottom-0 bg-[#3a3a3a] hover:bg-[#444444] text-white px-4 py-2 rounded-full text-sm transition-colors mr-0.5 my-0.5">
+                  Add
+                </button>
+              </div>
             </div>
           </div>
 
@@ -171,12 +173,13 @@ export default function MainContent({ sidebarExpanded }: MainContentProps) {
                     </div>
                     <label htmlFor={`ocr-${index}`} className="text-xs text-gray-400 ml-1 flex items-center">
                       Force OCR
-                      <HelpCircle size={14} className="ml-1 fill-gray-600 text-gray-800" />
+                      <HelpCircle size={14} className="ml-2 fill-gray-600 text-gray-800" />
                     </label>
                   </div>
                   <button
                     onClick={() => removeFile(index)}
                     className="ml-2 w-5 h-5 flex items-center justify-center rounded-full hover:bg-[#3a3a3a] transition-colors"
+                    aria-label="Remove file"
                   >
                     <X size={14} />
                   </button>
@@ -204,11 +207,27 @@ export default function MainContent({ sidebarExpanded }: MainContentProps) {
               />
               <span>Start with Deep Dive</span>
             </button>
-            <HelpCircle size={16} className="ml-2 fill-white text-[#FF8C00] cursor-pointer" />
+            <div className="relative inline-block">
+              <HelpCircle 
+                size={16} 
+                className="ml-2 fill-white text-[#0a0702] cursor-pointer" 
+                data-component-name="_c" 
+                onMouseEnter={(e) => {
+                  const tooltip = document.createElement('div');
+                  tooltip.className = 'absolute z-50 top-0 left-full ml-2 p-3 w-72 bg-[#1A1A1A] text-sm text-white rounded-2xl shadow-lg';
+                  tooltip.innerHTML = 'Deep Dive processes documents section by section for "unlimited" context, enabling complete answers. Run once per chat to unlock Table Al and Prompt Loops';
+                  tooltip.id = 'help-tooltip';
+                  e.currentTarget.parentNode?.appendChild(tooltip);
+                }}
+                onMouseLeave={() => {
+                  const tooltip = document.getElementById('help-tooltip');
+                  if (tooltip) tooltip.remove();
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
   )
 }
-
