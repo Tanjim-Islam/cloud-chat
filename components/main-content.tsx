@@ -4,6 +4,7 @@ import { useState } from "react"
 import { AlertCircle, X, FileText, HelpCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { TiWeatherCloudy } from "react-icons/ti"
+import Image from "next/image"
 
 interface MainContentProps {
   sidebarExpanded: boolean
@@ -28,11 +29,7 @@ export default function MainContent({ sidebarExpanded }: MainContentProps) {
       <div className="h-full bg-[#2B2B2B] rounded-2xl p-6 relative overflow-auto">
         {/* Subtle dot pattern background */}
         <div
-          className="absolute inset-0 opacity-5 pointer-events-none"
-          style={{
-            backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
-            backgroundSize: "20px 20px",
-          }}
+          className="absolute inset-0 opacity-5 pointer-events-none dot-pattern-bg"
         />
 
         {/* Web version notice */}
@@ -85,9 +82,11 @@ export default function MainContent({ sidebarExpanded }: MainContentProps) {
           {/* Drag & drop */}
           <div className="bg-[#1E1E1E] rounded-2xl p-6 flex items-center cursor-pointer hover:bg-[#252525] transition-colors">
             <div className="w-10 h-10 rounded-lg bg-[#2B2B2B] flex items-center justify-center mr-4">
-              <img
+              <Image
                 src="/drop.png"
                 alt="Drop"
+                width={24}
+                height={24}
                 className="w-6 h-6"
               />
             </div>
@@ -104,9 +103,11 @@ export default function MainContent({ sidebarExpanded }: MainContentProps) {
             <p className="text-sm mb-3">Enter in a public URL:</p>
             <div className="flex items-center">
               <div className="w-8 h-8 rounded-lg bg-[#2B2B2B] flex items-center justify-center mr-2">
-                <img
+                <Image
                   src="/url.png"
                   alt="URL"
+                  width={20}
+                  height={20}
                   className="w-5 h-5"
                 />
               </div>
@@ -141,9 +142,11 @@ export default function MainContent({ sidebarExpanded }: MainContentProps) {
           {/* Google Drive */}
           <div className="bg-[#1E1E1E] rounded-2xl p-6 flex items-center cursor-pointer hover:bg-[#252525] transition-colors">
             <div className="w-10 h-10 rounded-lg bg-[#2B2B2B] flex items-center justify-center mr-4">
-              <img
+              <Image
                 src="/drive.png"
                 alt="Google Drive"
+                width={24}
+                height={24}
                 className="w-6 h-6"
               />
             </div>
@@ -214,9 +217,11 @@ export default function MainContent({ sidebarExpanded }: MainContentProps) {
           <span className="text-gray-500">or</span>
           <div className="flex items-center">
             <button className="w-[250px] h-[60px] bg-gradient-to-r from-[#FFB938] to-[#FF8C00] text-white px-6 py-3 rounded-full hover:opacity-90 transition duration-200 flex items-center justify-center">
-              <img
+              <Image
                 src="/ai.png"
                 alt="AI"
+                width={20}
+                height={20}
                 className="w-5 h-5 mr-2"
               />
               <span>Start with Deep Dive</span>

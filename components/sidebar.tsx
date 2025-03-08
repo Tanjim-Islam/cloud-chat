@@ -2,6 +2,7 @@
 import { Search, Settings, Plus, MessageSquarePlus } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { GoSidebarCollapse, GoSidebarExpand } from "react-icons/go"
+import Image from "next/image"
 
 interface SidebarProps {
   expanded: boolean
@@ -20,19 +21,21 @@ export default function Sidebar({ expanded, toggleSidebar }: SidebarProps) {
         // Expanded header
         <div className="flex items-center justify-between p-4">
           <div className="flex items-center">
-            <img
+            <Image
               src="/logo.png"
               alt="Socrates Logo"
+              width={32}
+              height={32}
               className="h-8 w-8"
             />
             <span className="ml-2 text-xl font-semibold text-white">socrates</span>
           </div>
 
           <div className="flex items-center gap-2">
-            <button className="p-2 rounded-md hover:bg-[#333333] transition-colors">
+            <button className="p-2 rounded-md hover:bg-[#333333] transition-colors" aria-label="Search">
               <Search size={20} className="text-gray-400" />
             </button>
-            <button onClick={toggleSidebar} className="p-2 rounded-md hover:bg-[#333333] transition-colors">
+            <button onClick={toggleSidebar} className="p-2 rounded-md hover:bg-[#333333] transition-colors" aria-label="Collapse sidebar">
               <GoSidebarCollapse size={20} className="text-gray-400" />
             </button>
           </div>
@@ -41,16 +44,18 @@ export default function Sidebar({ expanded, toggleSidebar }: SidebarProps) {
         // Collapsed vertical icons
         <div className="flex flex-col items-center">
           <div className="p-4">
-            <img
+            <Image
               src="/logo.png"
               alt="Socrates Logo"
+              width={32}
+              height={32}
               className="h-8 w-8"
             />
           </div>
-          <button onClick={toggleSidebar} className="p-2 mb-2 rounded-md hover:bg-[#333333] transition-colors">
+          <button onClick={toggleSidebar} className="p-2 mb-2 rounded-md hover:bg-[#333333] transition-colors" aria-label="Expand sidebar">
             <GoSidebarExpand size={20} className="text-gray-400" />
           </button>
-          <button className="p-2 rounded-md hover:bg-[#333333] transition-colors">
+          <button className="p-2 rounded-md hover:bg-[#333333] transition-colors" aria-label="Search">
             <Search size={20} className="text-gray-400" />
           </button>
         </div>
@@ -75,11 +80,16 @@ export default function Sidebar({ expanded, toggleSidebar }: SidebarProps) {
       <div className="mt-auto flex flex-col items-center">
         {!expanded && (
           <>
-            <button className="p-2 mb-4 w-8 h-8 bg-[#FF8C00] rounded-full flex items-center justify-center">
+            <button className="p-2 mb-4 w-8 h-8 bg-[#FF8C00] rounded-full flex items-center justify-center" aria-label="Upgrade">
               <span className="text-xs">↑</span>
             </button>
-            <button className="p-2 mb-4">
-              <img src="/flow.png" alt="Flow" height="40" />
+            <button className="p-2 mb-4" aria-label="Flow AI Templates">
+              <Image 
+                src="/flow.png" 
+                alt="Flow"
+                width={40}
+                height={40}
+              />
             </button>
           </>
         )}
@@ -97,9 +107,11 @@ export default function Sidebar({ expanded, toggleSidebar }: SidebarProps) {
             <div className="mb-4"></div>
 
             <button className="w-full flex items-center gap-2 py-2 hover:bg-[#333333] rounded-3xl transition-colors">
-              <img
+              <Image
                 src="/flow.png"
                 alt="Flow"
+                width={32}
+                height={32}
                 className="w-8 h-8 bg-[#333333] rounded-full"
               />
               <span>Flow AI Templates</span>
@@ -109,7 +121,13 @@ export default function Sidebar({ expanded, toggleSidebar }: SidebarProps) {
 
         <div className={cn("flex items-center", expanded ? "w-full px-4 mb-4" : "flex-col mb-4")}>
           <div className="w-10 h-10 rounded-full bg-gray-500 flex-shrink-0 overflow-hidden">
-            <img src="/placeholder-user.png" alt="User Profile" className="w-full h-full object-cover" />
+            <Image 
+              src="/placeholder-user.png" 
+              alt="User Profile" 
+              width={40}
+              height={40}
+              className="w-full h-full object-cover" 
+            />
           </div>
 
           {expanded && (
@@ -118,7 +136,7 @@ export default function Sidebar({ expanded, toggleSidebar }: SidebarProps) {
             </div>
           )}
 
-          <button className={cn("p-2 rounded-md hover:bg-[#333333] transition-colors", expanded ? "ml-auto" : "mt-4")}>
+          <button className={cn("p-2 rounded-md hover:bg-[#333333] transition-colors", expanded ? "ml-auto" : "mt-4")} aria-label="Settings">
             <Settings size={20} className="text-gray-400" />
           </button>
         </div>
